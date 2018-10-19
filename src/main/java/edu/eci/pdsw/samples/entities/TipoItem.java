@@ -12,42 +12,46 @@ import java.io.Serializable;
  * @author 2106913
  */
 public class TipoItem implements Serializable{
-    private int id;
-    private String descripcion;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private String descripcion;
 
-    public TipoItem(int id, String descripcion) {
-        this.id = id;
-        this.descripcion = descripcion;
-    }
+	public TipoItem(int id, String descripcion) {
+		this.id = id;
+		this.descripcion = descripcion;
+	}
 
-    public TipoItem() {
-    }
-    
-    
-    
+	public TipoItem() {
+	}
 
-    public int getID() {
-        return id;
-    }
 
-    public void setID(int ID) {
-        this.id = ID;
-    }
 
-    
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public int getID() {
+		return id;
+	}
 
-    public void setDescripcion(String Descripcion) {
-        this.descripcion = Descripcion;
-    }
+	public void setID(int ID) {
+		this.id = ID;
+	}
 
-    @Override
-    public String toString() {
-        return "TipoItem{" + "id=" + id + ", descripcion=" + descripcion + '}';
-    }
-    
-    
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String Descripcion) {
+		this.descripcion = Descripcion;
+	}
+
+	@Override
+	public String toString() {
+		return "TipoItem{" + "id=" + id + ", descripcion=" + descripcion + '}';
+	}
+
+
 }

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<<<<<<< HEAD
+
 <mapper
 	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
 
@@ -12,58 +12,41 @@
 		select
 
 		c.nombre,
-=======
-<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
-
-	<select parameterType="map" id="consultarClientes" resultMap="ClientResult">
-		select
-		c.nombre as Clientes_nombre,
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
 		c.documento,
 		c.telefono,
 		c.direccion,
 		c.email,
 		c.vetado,
-<<<<<<< HEAD
 
 		ir.id ,
 		ir.fechainiciorenta ,
 		ir.fechafinrenta ,
 
 		i.id ,
-		i.nombre ,
+		i.nombre
+		,
 		i.descripcion ,
-=======
-		ir.id as ItemRentado_id,
-		ir.fechainiciorenta ,
-		ir.fechafinrenta ,
-		i.id as Item_id,
-		i.nombre as Item_nombre,
-		i.descripcion as Item_descripcion,
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
 		i.fechalanzamiento ,
 		i.tarifaxdia ,
 		i.formatorenta ,
 		i.genero ,
-<<<<<<< HEAD
 		ti.id ,
 		ti.descripcion
 
 
-=======
-		ti.id as TipoItem_id,
-		ti.descripcion as TipoItem_descripcion
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
 		FROM VI_CLIENTES as c
-		left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
-		left join VI_ITEMS as i on ir.ITEMS_id=i.id
-		left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+		left join
+		VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
+		left join
+		VI_ITEMS as i on ir.ITEMS_id=i.id
+		left join VI_TIPOITEM as ti on
+		i.TIPOITEM_id=ti.id
+
 	</select>
 
-<<<<<<< HEAD
 	<select parameterType="Cliente" id="consultarCliente"
 		resultMap="ClientResult">
-	select
+		select
 
 		c.nombre,
 		c.documento,
@@ -77,7 +60,8 @@
 		ir.fechafinrenta ,
 
 		i.id ,
-		i.nombre ,
+		i.nombre
+		,
 		i.descripcion ,
 		i.fechalanzamiento ,
 		i.tarifaxdia ,
@@ -88,50 +72,52 @@
 
 
 		FROM VI_CLIENTES as c
-		left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
-		left join VI_ITEMS as i on ir.ITEMS_id=i.id
-		left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+		left join
+		VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
+		left join
+		VI_ITEMS as i on ir.ITEMS_id=i.id
+		left join VI_TIPOITEM as ti on
+		i.TIPOITEM_id=ti.id
 
-	 	WHERE documento=#{idcli}
+		WHERE c.documento=#{idcli}
 	</select>
-	
+
 	<select parameterType="map" id="consultarItemsCliente"
 		resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.RentItemResult">
-		SELECT * FROM VI_ITEMRENTADO WHERE CLIENTES_documento = #{idcli};
+		SELECT * FROM VI_ITEMRENTADO WHERE CLIENTES_documento =
+		#{idcli};
 	</select>
-	
+
 
 	<insert parameterType="ItemRentado"
 		id="agregarItemRentadoACliente">
 		INSERT INTO VI_ITEMRENTADO
 		(CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
-		VALUES (#{idir},#{idit},#{fiir},#{ffir})
+		VALUES
+		(#{idir},#{idit},#{fiir},#{ffir})
 	</insert>
-	
+
 	<insert parameterType="ItemRentado"
 		id="registrarAlquilerCliente">
 		INSERT INTO VI_ITEMRENTADO
 		(CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
-		VALUES (#{doc},#{itemid},#{fechain},#{fechafin})
-=======
-	<select parameterType="ItemRentado" id="consultarItemsCliente" resultMap="ClientResult">
-		SELECT ItemRentado FROM VI_CLIENTES
-			WHERE documento=#{idcli}
-	</select>
-	
-	<select parameterType="Cliente" id="consultarCliente" resultMap="ClientResult">
-		SELECT * FROM VI_CLIENTES
-			WHERE documento=#{idcli}
-	</select>
-
-
-	<insert parameterType="ItemRentado" id="agregarItemRentadoACliente">
-		INSERT INTO
-		VI_ITEMRENTADO
-		(CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
-		VALUES (#{idir},#{idit},#{fiir},#{ffir})
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+		VALUES
+		(#{doc},#{itemid},#{fechain},#{fechafin})
 	</insert>
+
+	<insert parameterType="Cliente" id="insertarCliente" 	keyProperty="documento">
+		INSERT INTO VI_CLIENTES (documento, nombre, telefono, direccion, email, vetado)
+			VALUES (#{documento}, #{nombre}, #{telefono}, #{direccion}, #{email}, #{vetado})
+	</insert>
+	
+	<update id="vetarCliente">
+		update VI_CLIENTES set
+		vetado = #{estado}		
+		where documento = #{doc}
+	</update>
+	
+	
+	
 
 	<resultMap type='Cliente' id='ClientResult'>
 		<id property='documento' column='documento' />
@@ -140,14 +126,11 @@
 		<result property='direccion' column='direccion' />
 		<result property='email' column='email' />
 		<result property='vetado' column='vetado' />
-<<<<<<< HEAD
 		<collection property="rentados" ofType="ItemRentado"
-=======
-		<collection property="rentados" ofType="ItemRentado"  
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
-			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.RentItemResult"></collection>
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.RentItemResult">
+		</collection>
 	</resultMap>
-	
-	
+
+
 
 </mapper>

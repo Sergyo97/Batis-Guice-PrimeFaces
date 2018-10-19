@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.TipoItem;
@@ -31,5 +30,11 @@ public interface ItemMapper {
 	public long consultarMultaAlquiler(@Param("idItem")int idItem, @Param("date")Date date);
 	
 	public TipoItem consultarTipoItem(@Param("id") int itemid) ;
+
+	public long consultarCostoAlquiler(@Param("id") int iditem,@Param("dias") int numdias);
+
+	public void actualizarTarifaItem(@Param("id") int id,@Param("tarifa") long tarifa);
+	
+	
     
 }

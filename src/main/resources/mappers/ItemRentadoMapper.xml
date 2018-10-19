@@ -3,16 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper">
+<mapper
+	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper">
 
-<<<<<<< HEAD
-=======
-	<!--  <select parameterType="ItemRentado" id="consultarItemsCliente" resultMap="RentItemResult">
+	<select parameterType="ItemRentado" id="consultarItemsCliente"
+		resultMap="RentItemResult">
 		SELECT * FROM VI_ITEMS
-			WHERE id = #{id}
-	</select> --> 
-		
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+		WHERE id = #{id}
+	</select>
+
 	<resultMap type='ItemRentado' id='RentItemResult'>
 		<id property='id' column='id' />
 		<result property='fechainiciorenta' column='fechainiciorenta' />

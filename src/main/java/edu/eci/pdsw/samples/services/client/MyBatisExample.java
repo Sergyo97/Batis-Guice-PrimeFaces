@@ -36,6 +36,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoItemMapper;
+import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.TipoItem;
 
@@ -64,8 +65,6 @@ public class MyBatisExample {
 		}
 		return sqlSessionFactory;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Programa principal de ejempo de uso de MyBATIS
@@ -74,38 +73,11 @@ public class MyBatisExample {
 	 */
 	public static void main(String args[]) throws SQLException {
 
-		SqlSessionFactory sessionfact = getSqlSessionFactory();
-		SqlSession sqlss = sessionfact.openSession();
-
-		ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-		//System.out.println(cm.consultarCliente(100));
-		//System.out.println(cm.consultarClientes());
-
-		//cm.agregarItemRentadoACliente(100, 121, new Date(1022018), new Date(10102018));
-
-		ItemMapper im = sqlss.getMapper(ItemMapper.class);
-		//im.insertarItem(new Item(new TipoItem(3, "Juego"), 15, "Fortnite", "The best of the best", new Date(2017, 07, 25), 0, "Digital", "BattleRoyale"));
-		//im.deleteItem(14);
-		//System.out.println(im.consultarItem(15));
-		//System.out.println(im.consultarItems());
-		//System.out.println(im.consultarItemsDisponibles());
-		//System.out.println(im.consultarMultaPorDia(15));
-		//System.out.println(cm.consultarCliente(9843));
-		//System.out.println(cm.consultarItemsCliente(9843));
-
-		sqlss.commit();
-		sqlss.close();
-
-	}
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
-
-	/**
-	 * Programa principal de ejempo de uso de MyBATIS
-	 * @param args
-	 * @throws SQLException 
-	 */
-	public static void main(String args[]) throws SQLException {
-
+		Cliente cliente = new Cliente("Sergio", 2138850,"6006", "direccion", "Sergio.ruiz@mail.escuelaing.edu.com");
+		TipoItem tipoItem = new TipoItem(1, "Video");
+		Item item = new Item(tipoItem, 2185142, "CallOfDutty4", "blablabla", Date.valueOf("2018-10-15"), 30000, "Digital", "BOM");
+		
+		
 		SqlSessionFactory sessionfact = getSqlSessionFactory();
 		SqlSession sqlss = sessionfact.openSession();
 
@@ -113,28 +85,35 @@ public class MyBatisExample {
 		ItemMapper im = sqlss.getMapper(ItemMapper.class);
 		TipoItemMapper tim = sqlss.getMapper(TipoItemMapper.class);
 
-		//System.out.println(cm.consultarCliente(12345));
+		//System.out.println(cm.consultarCliente(2138850));
 
 		//System.out.println(cm.consultarClientes());
 
 		//cm.agregarItemRentadoACliente(100, 121, new Date(1022018), new Date(10102018));
 
 
-		//im.insertarItem(new Item(new TipoItem(3, "Juego"), 15, "Fortnite", "The best of the best", new Date(2017, 07, 25), 0, "Digital", "BattleRoyale"));
-		//im.deleteItem(14);
-		//System.out.println(im.consultarItem(15));
+		//im.insertarItem(new Item(new TipoItem(3, "Juego"), 15, "Fortnite", "The best of the best", new Date(2017, 07, 25), 10000, "Digital", "BattleRoyale"));
+		//im.deleteItem(15);
+		//System.out.println(im.consultarItem(2185142));
 		//System.out.println(im.consultarItems());
 		//System.out.println(im.consultarItemsDisponibles());
 		//System.out.println(im.consultarMultaPorDia(15));
 		//System.out.println(cm.consultarItemsCliente(12345));
 		//ARREGLAR SIGUIENTE
 		//System.out.println(im.consultarMultaAlquiler(30, Date.valueOf("2018-10-18")));
+		
 		//System.out.println(tim.consultarTipoItem(1));
 		//System.out.println(tim.consultarTiposItem());
 
 		
 		
-		cm.registrarAlquilerCliente(12345,15,Date.valueOf("2018-10-19"),Date.valueOf("2018-10-22"));
+		//cm.registrarAlquilerCliente(12345,15,Date.valueOf("2018-10-19"),Date.valueOf("2018-10-22"));	
+		//cm.insertarCliente(cliente);
+		//System.out.println(im.consultarCostoAlquiler(15, 3));
+		//im.actualizarTarifaItem(15, 15000);
+		//im.insertarItem(item);
+		//cm.vetarCliente(2138850, 1);
+		
 		
 		sqlss.commit();
 		sqlss.close(); 

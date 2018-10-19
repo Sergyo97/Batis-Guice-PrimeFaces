@@ -1,6 +1,13 @@
 package edu.eci.pdsw.samples.services;
 
+import static com.google.inject.Guice.createInjector;
+
+import java.util.Optional;
+
+import org.mybatis.guice.XMLMyBatisModule;
+
 import com.google.inject.Injector;
+
 import edu.eci.pdsw.sampleprj.dao.ClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.ItemDAO;
 import edu.eci.pdsw.sampleprj.dao.TipoItemDAO;
@@ -8,13 +15,7 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisItemDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTipoItemDAO;
 import edu.eci.pdsw.samples.services.impl.ServiciosAlquilerImpl;
-import org.apache.ibatis.transaction.TransactionFactory;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
-import org.mybatis.guice.XMLMyBatisModule;
-
-import java.util.Optional;
-
-import static com.google.inject.Guice.createInjector;
+import edu.eci.pdsw.samples.services.impl.ServiciosAlquilerItemsStub;
 
 public class ServiciosAlquilerFactory {
 
@@ -29,7 +30,11 @@ public class ServiciosAlquilerFactory {
 				setEnvironmentId(env);
 				setClassPathResource(pathResource);
 				bind(ItemDAO.class).to(MyBatisItemDAO.class);
+				bind(ClienteDAO.class).to(MyBatisClienteDAO.class);
+				bind(TipoItemDAO.class).to(MyBatisTipoItemDAO.class);
 				bind(ServiciosAlquiler.class).to(ServiciosAlquilerImpl.class);
+				bind(ServiciosAlquiler.class).to(ServiciosAlquilerItemsStub.class);
+				
 			}
 		});
 	}

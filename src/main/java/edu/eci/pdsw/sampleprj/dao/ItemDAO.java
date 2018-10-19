@@ -10,21 +10,17 @@ import edu.eci.pdsw.samples.entities.Item;
 public interface ItemDAO {
 
 	public void save(Item it) throws PersistenceException;
-
-<<<<<<< HEAD
+	
 	public Item load(int id) throws PersistenceException;
-=======
-   public Item load(int id) throws PersistenceException;
    
    public List<Item> consultarItemsDisponiles() throws PersistenceException;
    
    public long ColsutarMultaPorDia(int itemId) throws PersistenceException;
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
-
-	public List<Item> consultarItemsDisponiles() throws PersistenceException;
-
-	public long ColsutarMultaPorDia(int itemId) throws PersistenceException;
 
 	public long consultarMultaAlquiler(int idItem, Date fechaDevolucion) throws PersistenceException;
+
+	public long consultarCostoAlquiler(int iditem, int numdias);
+
+	public void actualizarTarifaItem(int id, long tarifa);
 	 
 }		

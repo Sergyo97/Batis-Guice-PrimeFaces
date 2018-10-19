@@ -1,9 +1,6 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
-<<<<<<< HEAD
 import java.sql.Date;
-=======
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -13,10 +10,6 @@ import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.ClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.samples.entities.Cliente;
-<<<<<<< HEAD
-import edu.eci.pdsw.samples.entities.Item;
-=======
->>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
 import edu.eci.pdsw.samples.entities.ItemRentado;
 
 public class MyBatisClienteDAO implements ClienteDAO {
@@ -74,10 +67,23 @@ public class MyBatisClienteDAO implements ClienteDAO {
 	}
 
 	@Override
-	public List<ItemRentado> consultarItemsCliente(long idCliente) throws PersistenceException {
-		// TODO Auto-generated method stub
-		return null;
+	public void registrarCliente(long documento, String nombre, String telefono, String direccion, String email,
+			int i) {
+		try {
+			clienteMapper.registrarCliente(documento,nombre,telefono,direccion,email,i);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al consultar items del cliente o el cliente con documento " + e);
+		}
+		
 	}
 
-
+	@Override
+	public void vetarCliente(long docu, int est) {		
+		try {
+			clienteMapper.vetarCliente(docu,est);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al actualizar estado " + e);
+		}
+		
+	}
 }

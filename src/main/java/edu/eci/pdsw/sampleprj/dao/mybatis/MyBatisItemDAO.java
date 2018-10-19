@@ -67,6 +67,24 @@ public class MyBatisItemDAO implements ItemDAO{
 		}
 	}
 
+	@Override
+	public long consultarCostoAlquiler(int iditem, int numdias) {
+		try {
+			return itemMapper.consultarCostoAlquiler(iditem, numdias);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al consultar costo alquiler de Item o Item inexistente" + e);
+		}
+	}
+
+	@Override
+	public void actualizarTarifaItem(int id, long tarifa) {
+		try {
+			itemMapper.actualizarTarifaItem(id, tarifa);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al actualizar tarifa o no exite ningun Item con ese Id" + e);
+		}		
+	}
+
 
 
 }

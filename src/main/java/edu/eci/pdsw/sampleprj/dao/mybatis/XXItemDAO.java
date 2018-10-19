@@ -40,4 +40,16 @@ public class XXItemDAO implements ItemDAO {
 		return 0;
 	}
 
+	@Override
+	public long consultarCostoAlquiler(int iditem, int numdias) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void actualizarTarifaItem(int id, long tarifa) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
