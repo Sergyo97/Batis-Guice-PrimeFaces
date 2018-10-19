@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<<<<<<< HEAD
+<mapper
+	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
+
+	<select parameterType="map" id="consultarClientes"
+		resultMap="ClientResult">
+		select
+
+		c.nombre,
+=======
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
+
+	<select parameterType="map" id="consultarClientes" resultMap="ClientResult">
+		select
+		c.nombre as Clientes_nombre,
+>>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+		c.documento,
+		c.telefono,
+		c.direccion,
+		c.email,
+		c.vetado,
+<<<<<<< HEAD
+
+		ir.id ,
+		ir.fechainiciorenta ,
+		ir.fechafinrenta ,
+
+		i.id ,
+		i.nombre ,
+		i.descripcion ,
+=======
+		ir.id as ItemRentado_id,
+		ir.fechainiciorenta ,
+		ir.fechafinrenta ,
+		i.id as Item_id,
+		i.nombre as Item_nombre,
+		i.descripcion as Item_descripcion,
+>>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+		i.fechalanzamiento ,
+		i.tarifaxdia ,
+		i.formatorenta ,
+		i.genero ,
+<<<<<<< HEAD
+		ti.id ,
+		ti.descripcion
+
+
+=======
+		ti.id as TipoItem_id,
+		ti.descripcion as TipoItem_descripcion
+>>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+		FROM VI_CLIENTES as c
+		left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
+		left join VI_ITEMS as i on ir.ITEMS_id=i.id
+		left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+	</select>
+
+<<<<<<< HEAD
+	<select parameterType="Cliente" id="consultarCliente"
+		resultMap="ClientResult">
+	select
+
+		c.nombre,
+		c.documento,
+		c.telefono,
+		c.direccion,
+		c.email,
+		c.vetado,
+
+		ir.id ,
+		ir.fechainiciorenta ,
+		ir.fechafinrenta ,
+
+		i.id ,
+		i.nombre ,
+		i.descripcion ,
+		i.fechalanzamiento ,
+		i.tarifaxdia ,
+		i.formatorenta ,
+		i.genero ,
+		ti.id ,
+		ti.descripcion
+
+
+		FROM VI_CLIENTES as c
+		left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
+		left join VI_ITEMS as i on ir.ITEMS_id=i.id
+		left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+
+	 	WHERE documento=#{idcli}
+	</select>
+	
+	<select parameterType="map" id="consultarItemsCliente"
+		resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.RentItemResult">
+		SELECT * FROM VI_ITEMRENTADO WHERE CLIENTES_documento = #{idcli};
+	</select>
+	
+
+	<insert parameterType="ItemRentado"
+		id="agregarItemRentadoACliente">
+		INSERT INTO VI_ITEMRENTADO
+		(CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
+		VALUES (#{idir},#{idit},#{fiir},#{ffir})
+	</insert>
+	
+	<insert parameterType="ItemRentado"
+		id="registrarAlquilerCliente">
+		INSERT INTO VI_ITEMRENTADO
+		(CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
+		VALUES (#{doc},#{itemid},#{fechain},#{fechafin})
+=======
+	<select parameterType="ItemRentado" id="consultarItemsCliente" resultMap="ClientResult">
+		SELECT ItemRentado FROM VI_CLIENTES
+			WHERE documento=#{idcli}
+	</select>
+	
+	<select parameterType="Cliente" id="consultarCliente" resultMap="ClientResult">
+		SELECT * FROM VI_CLIENTES
+			WHERE documento=#{idcli}
+	</select>
+
+
+	<insert parameterType="ItemRentado" id="agregarItemRentadoACliente">
+		INSERT INTO
+		VI_ITEMRENTADO
+		(CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
+		VALUES (#{idir},#{idit},#{fiir},#{ffir})
+>>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+	</insert>
+
+	<resultMap type='Cliente' id='ClientResult'>
+		<id property='documento' column='documento' />
+		<result property='nombre' column='nombre' />
+		<result property='telefono' column='telefono' />
+		<result property='direccion' column='direccion' />
+		<result property='email' column='email' />
+		<result property='vetado' column='vetado' />
+<<<<<<< HEAD
+		<collection property="rentados" ofType="ItemRentado"
+=======
+		<collection property="rentados" ofType="ItemRentado"  
+>>>>>>> e95b9b7be0e6a44123f0cfad94a2ce710d15dd46
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.RentItemResult"></collection>
+	</resultMap>
+	
+	
+
+</mapper>
