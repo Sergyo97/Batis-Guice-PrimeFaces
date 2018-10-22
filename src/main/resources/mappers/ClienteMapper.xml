@@ -23,13 +23,13 @@
 		ir.fechafinrenta ,
 
 		i.id ,
-		i.nombre
-		,
+		i.nombre,
 		i.descripcion ,
 		i.fechalanzamiento ,
 		i.tarifaxdia ,
 		i.formatorenta ,
 		i.genero ,
+		
 		ti.id ,
 		ti.descripcion
 
@@ -60,13 +60,13 @@
 		ir.fechafinrenta ,
 
 		i.id ,
-		i.nombre
-		,
+		i.nombre,
 		i.descripcion ,
 		i.fechalanzamiento ,
 		i.tarifaxdia ,
 		i.formatorenta ,
 		i.genero ,
+		
 		ti.id ,
 		ti.descripcion
 

@@ -1,13 +1,5 @@
 package edu.eci.pdsw.samples.services.impl;
 
-import edu.eci.pdsw.samples.entities.Cliente;
-import edu.eci.pdsw.samples.entities.Item;
-import edu.eci.pdsw.samples.entities.ItemRentado;
-import edu.eci.pdsw.samples.entities.TipoItem;
-import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
-import edu.eci.pdsw.samples.services.ServiciosAlquiler;
-
-import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -16,6 +8,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import edu.eci.pdsw.samples.entities.Cliente;
+import edu.eci.pdsw.samples.entities.Item;
+import edu.eci.pdsw.samples.entities.ItemRentado;
+import edu.eci.pdsw.samples.entities.TipoItem;
+import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
+import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 
 public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
 
@@ -35,7 +34,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
 		itemsrentados = new HashMap<>();
 		tipositems = new HashMap<>();
 		mapaPrestamosPorIdCliente=new HashMap<>();
-		//poblar();
+		poblar();
 	}
 
 	@Override

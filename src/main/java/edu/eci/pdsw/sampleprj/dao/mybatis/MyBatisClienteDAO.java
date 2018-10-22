@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.mybatis.guice.transactional.Transactional;
 
 import com.google.inject.Inject;
 
@@ -39,6 +40,7 @@ public class MyBatisClienteDAO implements ClienteDAO {
 	@Override
 	public List<Cliente> loads() throws PersistenceException {
 		try {
+			System.out.println("Salu2");
 			return clienteMapper.consultarClientes();
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al consultar los clientes ", e);
@@ -57,6 +59,7 @@ public class MyBatisClienteDAO implements ClienteDAO {
 		
 
 	@Override
+	@Transactional
 	public void registrarAlquilerCliente(long docu, int itemId, Date date, Date date2) {
 		try {
 			clienteMapper.registrarAlquilerCliente(docu,itemId,date,date2);
@@ -78,6 +81,7 @@ public class MyBatisClienteDAO implements ClienteDAO {
 	}
 
 	@Override
+	@Transactional
 	public void vetarCliente(long docu, int est) {		
 		try {
 			clienteMapper.vetarCliente(docu,est);

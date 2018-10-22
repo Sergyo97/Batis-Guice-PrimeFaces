@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.mybatis.guice.transactional.Transactional;
 
 import com.google.inject.Inject;
 
@@ -77,6 +78,7 @@ public class MyBatisItemDAO implements ItemDAO{
 	}
 
 	@Override
+	@Transactional
 	public void actualizarTarifaItem(int id, long tarifa) {
 		try {
 			itemMapper.actualizarTarifaItem(id, tarifa);
